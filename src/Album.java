@@ -21,7 +21,7 @@ public int findSong(String title){
 }
 public void addToPlayList(String title, LinkedList<Song> playList){
         if (findSong(title) < 0){
-        System.out.println("Song is not exist");
+        System.out.println("Song " + title + " is not exist");
     }
     else{playList.add(this.songs.get(findSong(title)));}
 }
