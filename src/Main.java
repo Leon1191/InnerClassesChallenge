@@ -1,7 +1,7 @@
 import java.util.*;
 
 //        Create a program that implements a playlist for songs
-//        Create a Song class having Title and Duration for a song/
+//        Create a Song class having Title and Duration for a song
 //        The program will have an Album class containing a list of songs.
 //        The albums will be stored in an ArrayList
 //        Songs from different albums can be added to the playlist and will appear in the list in the order
@@ -81,11 +81,14 @@ play(playList);
                     forward = false;
                 }
             break;
-            case 3: if (forward) {System.out.println(i.previous().getTitle());
+            case 3:
+            if (forward && i.hasPrevious()) {System.out.println(i.previous().getTitle());
             forward = false;}
-            else {System.out.println(i.next().getTitle());
+            else if (i.hasNext()){System.out.println(i.next().getTitle());
             forward = true;}
-            break;
+            else{
+                System.out.println("No current song");}
+ break;
             case 4:
                 Iterator<Song> j = playList.iterator();
                 while(j.hasNext()){
@@ -94,10 +97,18 @@ play(playList);
             break;
             case 5: if (forward && i.hasPrevious()) {System.out.println(i.previous().getTitle() + " was delete");
             i.remove();
-            }
+                      }
             else if (!forward && i.hasNext()){System.out.println(i.next().getTitle() + " was delete");
             i.remove();
             }
+            else{
+                System.out.println("No current song");
+                break;}
+                if (i.hasNext()){
+                    System.out.println("Now current song is " + i.next().getTitle());
+                }
+                else{System.out.println("Now current song is " + i.previous().getTitle());
+                }
                 break;
             case 9:
                 System.out.println(
